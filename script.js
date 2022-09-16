@@ -1,4 +1,4 @@
-#!/usr/local/bin/node
+#!/usr/bin/env node
 console.info('The Base Strcture Template initialized with success!!!')
 /* import ora from 'ora';
 import { inquire } from './generator';
