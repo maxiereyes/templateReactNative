@@ -1,5 +1,11 @@
 module.exports = {
-    placeholderName: 'BaseStructure',
-    templateDir: './template',
-    postInitScript: './script.js',
-  };
+  // Placeholder used to rename and replace in files
+  // package.json, index.json, android/, ios/
+  placeholderName: "BaseStructure",
+
+  // Directory with template
+  templateDir: "./template",
+
+  // Path to script, which will be executed after init
+  postInitScript: "./script.js"
+};

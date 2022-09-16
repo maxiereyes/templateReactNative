@@ -1,15 +1,8 @@
 {
-  "name": "basestructure",
+  "name": "base-structure-template",
   "version": "1.0.0",
-  "description": "React native template with some dependencies",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/maxiereyes/templateReactNative.git"
-  },
+  "description": "React Native Template",
+  "repository": "git@github.com:maxiereyes/templateReactNative.git",
   "author": "Maxi Reyes",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/maxiereyes/templateReactNative/issues"
-  },
-  "homepage": "https://github.com/maxiereyes/templateReactNative#readme"
+  "license": "MIT"
 }
