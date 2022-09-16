@@ -4,5 +4,9 @@
   "description": "React Native Template",
   "repository": "git@github.com:maxiereyes/templateReactNative.git",
   "author": "Maxi Reyes",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^8.2.2",
+    "ora": "^5.4.1"
+  }
 }
