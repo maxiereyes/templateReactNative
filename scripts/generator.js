@@ -1,7 +1,7 @@
-import inquirer from 'inquirer';
-import fs from 'fs';
-import os from 'os';
-import { execSync } from "child_process";
+const inquirer = require('inquirer')
+const fs = require('fs')
+const os = require('os')
+const execSync = require('child_process')
 
 const PROJECT_PATH = process.cwd();
 const PACKAGE_JSON_PATH = `${PROJECT_PATH}/package.json`;
@@ -66,6 +66,4 @@ const inquire = (callback) => inquirer.prompt(QUESTIONS)
     callback(true);
   });
 
-export {
-  inquire
-}
+module.exports = inquire
