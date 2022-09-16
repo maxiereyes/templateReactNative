@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/local/bin/node
 console.log('This is post init script')
 /* import ora from 'ora';
 import { inquire } from './generator';
