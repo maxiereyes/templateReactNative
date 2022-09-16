@@ -1,5 +1,5 @@
 module.exports = {
-    placeholderName: 'ReactNativeTemplate',
+    placeholderName: 'BaseStructureTemplate',
     templateDir: './template',
-    postInitScript: './scripts/postInitScript',
+    postInitScript: './postInitScript.js',
   };
