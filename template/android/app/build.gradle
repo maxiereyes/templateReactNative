@@ -46,18 +46,22 @@ android {
             applicationId "com.basestructure"
             targetSdkVersion rootProject.ext.targetSdkVersion
             resValue "string", "build_config_package", "com.basestructure"
+            manifestPlaceholders = [auth0Domain: project.env.get('AUTH0_DOMAIN'), auth0Scheme: "com.basestructure"]
+
         }
         staging {
             minSdkVersion rootProject.ext.minSdkVersion    
             applicationId "com.basestructure.staging"
             targetSdkVersion rootProject.ext.targetSdkVersion
             resValue "string", "build_config_package", "com.basestructure"
+            manifestPlaceholders = [auth0Domain: project.env.get('AUTH0_DOMAIN'), auth0Scheme: "com.basestructure.staging"]
         }
         development {
             minSdkVersion rootProject.ext.minSdkVersion    
             applicationId "com.basestructure.development"
             targetSdkVersion rootProject.ext.targetSdkVersion
             resValue "string", "build_config_package", "com.basestructure"
+            manifestPlaceholders = [auth0Domain: project.env.get('AUTH0_DOMAIN'), auth0Scheme: "com.basestructure.development"]
         }
     }
 
