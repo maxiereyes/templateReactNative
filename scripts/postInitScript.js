@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import ora from 'ora';
+console.log('This is post init script')
+/* import ora from 'ora';
 import { inquire } from './generator';
 
 const spinner = ora('Optional libraries setup');
@@ -16,4 +17,4 @@ new Promise((resolve) => {
     throw new Error(
       'Something went wrong during the post init script execution',
     );
-  });
+  }); */
