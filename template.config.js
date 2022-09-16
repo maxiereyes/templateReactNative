@@ -1,5 +1,5 @@
 module.exports = {
-    placeholderName: 'BaseStructureTemplate',
+    placeholderName: 'BaseStructure',
     templateDir: './template',
     postInitScript: './postInitScript.js',
   };
