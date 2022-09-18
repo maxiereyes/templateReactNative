@@ -46,7 +46,7 @@ android {
             applicationId "com.basestructure"
             targetSdkVersion rootProject.ext.targetSdkVersion
             resValue "string", "build_config_package", "com.basestructure"
-            manifestPlaceholders = [auth0Domain: project.env.get('AUTH0_DOMAIN'), auth0Scheme: "com.basestructure"]
+            manifestPlaceholders = [auth0Domain: project.env.get('AUTH0_DOMAIN'), auth0Scheme: "com.basestructure", GOOGLE_API_KEY: project.env.get('GOOGLE_API_KEY')]
 
         }
         staging {
@@ -54,14 +54,14 @@ android {
             applicationId "com.basestructure.staging"
             targetSdkVersion rootProject.ext.targetSdkVersion
             resValue "string", "build_config_package", "com.basestructure"
-            manifestPlaceholders = [auth0Domain: project.env.get('AUTH0_DOMAIN'), auth0Scheme: "com.basestructure.staging"]
+            manifestPlaceholders = [auth0Domain: project.env.get('AUTH0_DOMAIN'), auth0Scheme: "com.basestructure.staging", GOOGLE_API_KEY: project.env.get('GOOGLE_API_KEY')]
         }
         development {
             minSdkVersion rootProject.ext.minSdkVersion    
             applicationId "com.basestructure.development"
             targetSdkVersion rootProject.ext.targetSdkVersion
             resValue "string", "build_config_package", "com.basestructure"
-            manifestPlaceholders = [auth0Domain: project.env.get('AUTH0_DOMAIN'), auth0Scheme: "com.basestructure.development"]
+            manifestPlaceholders = [auth0Domain: project.env.get('AUTH0_DOMAIN'), auth0Scheme: "com.basestructure.development", GOOGLE_API_KEY: project.env.get('GOOGLE_API_KEY')]
         }
     }
 

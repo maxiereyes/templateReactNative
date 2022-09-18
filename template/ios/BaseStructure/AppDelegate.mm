@@ -29,6 +29,8 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
 #import <React/RCTLinkingManager.h>
 
+#import <GoogleMaps/GoogleMaps.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
@@ -39,6 +41,9 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  NSString *apiMapsKey = @"GOOGLE_API_KEY";
+  [GMSServices provideAPIKey: apiMapsKey];
+  
   RCTAppSetupPrepareApp(application);
 
   RCTBridge *bridge = [self.reactDelegate createBridgeWithDelegate:self launchOptions:launchOptions];
