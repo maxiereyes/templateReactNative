@@ -6,6 +6,7 @@ platform :ios, '13.0'
 install! 'cocoapods', :deterministic_uuids => false
 
 abstract_target 'BaseStructureCommonPods' do
+  use_modular_headers!
   use_expo_modules!
   post_integrate do |installer|
     begin
@@ -29,18 +30,30 @@ abstract_target 'BaseStructureCommonPods' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'BaseStructureTests' do
-    inherit! :complete
+  #target 'BaseStructureTests' do
+    #inherit! :complete
     # Pods for testing
-  end
+  #end
 
   target 'BaseStructureDev' do
+    pod 'Firebase', :modular_headers => true
+    pod 'FirebaseCore', :modular_headers => true
+    pod 'GoogleUtilities', :modular_headers => true
+    $RNFirebaseAsStaticFramework = true
   end  
 
   target 'BaseStructureStg' do
+    pod 'Firebase', :modular_headers => true
+    pod 'FirebaseCore', :modular_headers => true
+    pod 'GoogleUtilities', :modular_headers => true
+    $RNFirebaseAsStaticFramework = true
   end  
 
   target 'BaseStructure' do
+    pod 'Firebase', :modular_headers => true
+    pod 'FirebaseCore', :modular_headers => true
+    pod 'GoogleUtilities', :modular_headers => true
+    $RNFirebaseAsStaticFramework = true
   end  
 
   post_install do |installer|

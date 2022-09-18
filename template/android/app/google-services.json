@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "416007814788",
+    "project_id": "basestructure-96a76",
+    "storage_bucket": "basestructure-96a76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416007814788:android:582d659468bf6dba0dccd1",
+        "android_client_info": {
+          "package_name": "com.basestructure.development"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416007814788-98lse7a13994to6ov4ec6f4sc2215rib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrJ8tYdpthg0VYbYxp50BdFXzBr2pGeEg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416007814788-98lse7a13994to6ov4ec6f4sc2215rib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
