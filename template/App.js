@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import MainNavigation from './src/navigation/MainNavigation';
 import { getCurrentUser } from './src/services/UserService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import './src/config/i18n.config'
 
 export const auth0 = new Auth0({ domain: AUTH0_DOMAIN, clientId: AUTH0_CLIENT_ID });
 
