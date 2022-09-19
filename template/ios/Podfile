@@ -5,7 +5,13 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '13.0'
 install! 'cocoapods', :deterministic_uuids => false
 
+# **linkage static is important**
+use_frameworks! :linkage => :static
+
 abstract_target 'BaseStructureCommonPods' do
+  $static_framework = []
+  #rn_maps_path = '../node_modules/react-native-maps'
+
   use_modular_headers!
   use_expo_modules!
   post_integrate do |installer|
@@ -19,6 +25,15 @@ abstract_target 'BaseStructureCommonPods' do
   rn_maps_path = '../node_modules/react-native-maps'
   pod 'react-native-google-maps', :path => rn_maps_path
 
+  $static_framework += [
+    'react-native-maps',
+    'react-native-google-maps',
+    'Google-Maps-iOS-Utils',
+    'GoogleMaps',
+    'Firebase',
+    'FirebaseCore'
+  ]
+
   # Flags change depending on the env values.
   flags = get_default_flags()
 
@@ -26,7 +41,7 @@ abstract_target 'BaseStructureCommonPods' do
     :path => config[:reactNativePath],
     :hermes_enabled => true,
     :fabric_enabled => flags[:fabric_enabled],
-    :flipper_configuration => FlipperConfiguration.enabled,
+    ##:flipper_configuration => FlipperConfiguration.enabled,
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
@@ -34,30 +49,58 @@ abstract_target 'BaseStructureCommonPods' do
     #inherit! :complete
     # Pods for testing
   #end
+  
+  pod 'Firebase'
+  pod 'FirebaseCore'
+  #pod 'react-native-google-maps', :path => rn_maps_path
+  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
 
   target 'BaseStructureDev' do
-    pod 'Firebase', :modular_headers => true
-    pod 'FirebaseCore', :modular_headers => true
-    pod 'GoogleUtilities', :modular_headers => true
-    $RNFirebaseAsStaticFramework = true
+    #pod 'Firebase', :modular_headers => true
+    #pod 'FirebaseCore', :modular_headers => true
+    #pod 'GoogleUtilities', :modular_headers => true
   end  
 
   target 'BaseStructureStg' do
-    pod 'Firebase', :modular_headers => true
-    pod 'FirebaseCore', :modular_headers => true
-    pod 'GoogleUtilities', :modular_headers => true
-    $RNFirebaseAsStaticFramework = true
+    #pod 'Firebase', :modular_headers => true
+    #pod 'FirebaseCore', :modular_headers => true
+    #pod 'GoogleUtilities', :modular_headers => true
   end  
 
   target 'BaseStructure' do
-    pod 'Firebase', :modular_headers => true
-    pod 'FirebaseCore', :modular_headers => true
-    pod 'GoogleUtilities', :modular_headers => true
-    $RNFirebaseAsStaticFramework = true
+    #pod 'Firebase', :modular_headers => true
+    #pod 'FirebaseCore', :modular_headers => true
+    #pod 'GoogleUtilities', :modular_headers => true
   end  
+
+  # ****** THIS IS THE MAGIC ******
+  pre_install do |installer|
+    Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
+        installer.pod_targets.each do |pod|
+            if $static_framework.include?(pod.name)
+                def pod.build_type;
+                Pod::BuildType.static_library # >= 1.9
+            end
+        end
+    end
+  end
 
   post_install do |installer|
     react_native_post_install(installer)
-    __apply_Xcode_12_5_M1_post_install_workaround(installer)
+      installer.pods_project.targets.each do |target|
+        if target.name == 'RCT-Folly'
+          target.build_configurations.each do |config|
+            config.build_settings['HEADER_SEARCH_PATHS'] = "$(inherited) ${PODS_ROOT}/fmt/include"
+          end
+        end
+      end
+      #   __apply_Xcode_12_5_M1_post_install_workaround(installer)
+      installer.pods_project.build_configurations.each do |config|
+        config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+      end
+    #react_native_post_install(installer)
+    #__apply_Xcode_12_5_M1_post_install_workaround(installer)
   end
+  pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec', :modular_headers => false
 end
