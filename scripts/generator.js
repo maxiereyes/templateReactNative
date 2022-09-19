@@ -8,27 +8,22 @@ const PACKAGE_JSON_PATH = `${PROJECT_PATH}/package.json`;
 const PROJECT_SRC_PATH = `${PROJECT_PATH}/src`
 
 const OPTIONAL_LIBRARIES = {
-  'react-native-async-storage': '^0.0.1',
-  'react-native-device-info': '^8.7.0',
-  'react-i18next': '^11.16.5',
-  'react-hook-form': '^7.29.0',
-  'yup': '^0.32.11',
-  'axios': '^0.26.1',
-  'react-query': '^3.34.19',
+  'react-i18next': '^11.18.6',
+  'react-hook-form': '^7.35.0',
+  'react-native-device-info': '^10.2.0'
 };
 
 const QUESTIONS = [
   {
     name: "libraries",
     "type": "checkbox",
-    default: ['axios'],
+    default: [],
     "message": "Select libraries to install",
     "choices": Object.keys(OPTIONAL_LIBRARIES)
   }
 ];
 
 const optionalFolders = [
-  { name: "api", condition: (libs) => libs.includes("orval") || libs.includes("react-query") },
   { name: "i18n", condition: (libs) => libs.includes('react-i18next') }
 ];
 

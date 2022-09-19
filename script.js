@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-
-const ora = require ('ora')
+console.log('Init install dependencies...');
+/* const ora = require ('ora')
 const inquire = require('./scripts/generator')
 
 const spinner = ora('Optional libraries setup');
@@ -17,4 +17,4 @@ new Promise((resolve) => {
     throw new Error(
       'Something went wrong during the post init script execution',
     );
-  });
+  }); */
