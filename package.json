@@ -6,7 +6,7 @@
   "author": "Maxi Reyes",
   "license": "MIT",
   "dependencies": {
-    "inquirer": "^8.2.2",
-    "ora": "^5.4.1"
+    "inquirer": "8.2.2",
+    "ora": "5.4.1"
   }
 }
